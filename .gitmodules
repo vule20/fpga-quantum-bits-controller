@@ -1,3 +1,15 @@
 [submodule "qubictutorial"]
 	path = qubictutorial
 	url = https://gitlab.com/LBL-QubiC/qubictutorial.git
+[submodule "distributed_processor"]
+	path = distributed_processor
+	url = https://gitlab.com/LBL-QubiC/distributed_processor.git
+[submodule "gateware"]
+	path = gateware
+	url = https://gitlab.com/LBL-QubiC/gateware.git
+[submodule "hardware"]
+	path = hardware
+	url = https://gitlab.com/LBL-QubiC/hardware.git
+[submodule "software"]
+	path = software
+	url = https://gitlab.com/LBL-QubiC/software.git
