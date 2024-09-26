@@ -1,0 +1,3 @@
+[submodule "qubictutorial"]
+	path = qubictutorial
+	url = https://gitlab.com/LBL-QubiC/qubictutorial.git
