@@ -13,3 +13,6 @@
 [submodule "software"]
 	path = software
 	url = https://gitlab.com/LBL-QubiC/software.git
+[submodule "qubitconfig"]
+	path = qubitconfig
+	url = https://gitlab.com/LBL-QubiC/experiments/qubitconfig.git
