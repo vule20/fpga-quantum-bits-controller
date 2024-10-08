@@ -1,0 +1,20 @@
+{
+  "window.zoomLevel": 1,
+  "files.autoSave": "afterDelay",
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "Visual Studio Dark",
+  "html.format.indentHandlebars": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "python.analysis.diagnosticSeverityOverrides": {},
+  "workbench.iconTheme": "material-icon-theme",
+  "prettier.requireConfig": false,
+  "prettier.printWidth": 90,
+  "prettier.tabWidth": 2
+}
