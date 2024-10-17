@@ -16,3 +16,6 @@
 [submodule "qubitconfig"]
 	path = qubitconfig
 	url = https://gitlab.com/LBL-QubiC/experiments/qubitconfig.git
+[submodule "chipcalibration"]
+	path = chipcalibration
+	url = https://gitlab.com/LBL-QubiC/experiments/chipcalibration.git
