@@ -1,17 +1,23 @@
 # qubic
 
-## Preacquisite
+Lawrence Berkeley National Laboratory's quantum control systems Qubic2.0 reproduction. Scripts for quick hardware synthesis, software installation, tutorials and so on.
 
+# Prerequisites
+
+## Installing Vivado
+
+<details>
+  <summary>Click to expand</summary>
 First, you have to install Vivado Enterprise so that it supports all IP cores needed for the gateware synthesis. If you're installing Vivado Enterprise with batch mode (using terminal on a remote server), you might follow my instructions to save time reading from AMD.
 
-- Register and Download [!https://www.xilinx.com/member/forms/download/xef.html?filename=Xilinx_Unified_2022.1_0420_0327_Lin64.bin](the Unified Vivado version 2022.1) from ADM. Then run this command to extract the `xsetup` for Vivado:
+- Register and Download [the Unified Vivado version 2022.1](!https://www.xilinx.com/member/forms/download/xef.html?filename=Xilinx_Unified_2022.1_0420_0327_Lin64.bin) from ADM. Then run this command to extract the `xsetup` for Vivado:
 
 ```bash
 chmod +x ./Xilinx_Unified_2022.1_0420_0327_Lin64.bin
 ./Xilinx_Unified_2022.1_0420_0327_Lin64.bin  --keep --noexec --target ~/tools/Xilinx
 ```
 
-If you want to install Vivado on the root folder so that other users can use, you should install it to the `/tools` folder:
+If you want to install Vivado on the root folder so that other users in a single server can use, you should install it to the `/tools` folder:
 
 ```bash
 sudo ./Xilinx_Unified_2022.1_0420_0327_Lin64.bin  --keep --noexec --target /tools/Xilinx
@@ -34,7 +40,7 @@ Finally, run this command and wait for the installation to finish:
 ./xsetup -b Install -a XilinxEULA,3rdPartyEULA -c ~/.Xilinx/install_config.txt
 ```
 
-## Installing drivers for peripherals on Linux
+### Installing drivers for peripherals on Linux
 
 By default, it seems that JTAG cable can't be detected by vivado. If you connect an FPGA board and a JTAG cable to upload bitstream fils to the board, the cable may not be detected.
 
@@ -91,8 +97,12 @@ localhost:3121/xilinx_tcf/Xilinx/96234996810A
 Vivado%
 ```
 
+</details>
+
 ## Running Linux on ZCU216
 
+<details>
+  <summary>Click to expand</summary>
 First, you need to download a boot image to run Linux on the ARM core in the board. You can use the image from Berkeley Lab here. After having the SD card booted and inserted to the board, you have to change the J71 switch to 0001 to switch to SD boot mode to run the image. Then turn on the power button, connect the J11 UART port to a host computer and also connect the board to a router in the same network as the host computer. Initially you don't know the IP address of the Xilinx board, but you can use this command on the host computer to access the board via UART. But first, you have to reset the device path to reset the device’s parameters to a 'sane' default state. Open the terminal in the host computer and run:
 
 ```bash
@@ -123,6 +133,35 @@ You should be able see the xilinx board `Nmap scan report for valhalla5.lan (192
 ![alt text](./docs/nmap.png)
 
 Then you can ssh into it, the default username and password is `xilinx`
+
+</details>
+
+## Hardware synthesis
+
+## System software installation
+
+<details>
+  <summary>Click to expand</summary>
+For Qubic2.0 to work correctly, you must both install correct libraries provided by Berkeley Lab on both the host and the FPGA gateware. We recommend you to install Anaconda on the host computer and have an isolated environment for qubic gateware. If you haven't installed Anaconda, you can run the [`install_conda.sh`](./scripts/install_conda.sh) script by:
+```bash
+bash ./scripts/install_conda.sh
+```
+
+The, to create a seperate environment for `qubic` and install approriate dependencies on the host computer, run:
+
+```bash
+bash ./scripts/qubic_setup.sh host
+```
+
+Also, clone this repository with all submodules on the ZCU216 and run:
+
+```bash
+bash ./scripts/qubic_setup.sh FPGA
+```
+
+This script will then run the qubic2.0 gateware on the FPGA board
+
+</details>
 
 # Contact
 
