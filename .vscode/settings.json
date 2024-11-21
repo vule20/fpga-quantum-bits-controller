@@ -9,7 +9,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "editor.minimap.enabled": false,
-  "workbench.colorTheme": "Visual Studio Dark",
+  "workbench.colorTheme": "Visual Studio Light",
   "html.format.indentHandlebars": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "python.analysis.diagnosticSeverityOverrides": {},
