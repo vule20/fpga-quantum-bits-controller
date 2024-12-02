@@ -7,9 +7,6 @@
 [submodule "gateware"]
 	path = gateware
 	url = https://gitlab.com/LBL-QubiC/gateware.git
-[submodule "hardware"]
-	path = hardware
-	url = https://gitlab.com/LBL-QubiC/hardware.git
 [submodule "software"]
 	path = software
 	url = https://gitlab.com/LBL-QubiC/software.git
