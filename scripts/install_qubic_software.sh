@@ -37,7 +37,7 @@ install_conda() {
         # Clean up
         rm -f $INSTALLER_SCRIPT
 
-        echo "Miniconda installation completed. Please restart your terminal or run 'source ~/.bashrc' to use Conda."
+        echo "Anaconda3 installation completed. Please restart your terminal or run 'source ~/.bashrc' to use Conda."
     fi
 }
 
@@ -68,14 +68,23 @@ case $1 in
         echo "Configuring for CLIENT machine..."
         sudo pip install -e distributed_processor/python
         sudo cp software/scripts/qubic_rpc_server.service /etc/systemd/system
+	
+        echo "Installation complete. Current Python version:"
+        python --version
+
         cp software/scripts/server_config.yaml ~/
         
-        CLIENT_IP4=$(hostname -I | awk '{print $1}')
+        # use host name instead of static IP4 to avoid having to search for IP
+    	# and manually update. In DNS, IP4 will automatically found by
+    	# referring to the computer host name
+        CLIENT_IP4=$HOSTNAME
         
         # change the IP address in the configuration file to the current IP4 of the FPGA board
-        sed -i "s/^ip: .*/ip: $CURRENT_IP/" ~/server_config.yaml
+        sed -i "s/^ip: .*/ip: $CLIENT_IP4/" ~/server_config.yaml
+
+	    echo "Running qubic server with systemctl. Use journalctl --follow -u qubic_rpc_server to track for real time logs"
         sudo cp software/scripts/start_qubic_server.sh /usr/local/bin/
-        sudo systemctl enable qubic_rpc_server.service
+        sudo systemctl start qubic_rpc_server
         ;;
     *)
         echo -e "\e[31mUsage: $0 {host|client}\e[0m"
@@ -83,5 +92,3 @@ case $1 in
         ;;
 esac
 
-echo "Installation complete. Current Python version:"
-python --version
