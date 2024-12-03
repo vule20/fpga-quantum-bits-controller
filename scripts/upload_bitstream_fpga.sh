@@ -23,4 +23,4 @@ if [ ! -f "$BITSTREAM_FILE" ]; then
 fi
 
 # Run Vivado with the TCL script to upload the bitstream
-vivado -log "$LOG_FOLDER/vivado.log" -journal "$LOG_FOLDER/vivado.jou" -mode batch -source scripts/upload_bitstream.tcl -tclargs "$BITSTREAM_FILE"  
+vivado -log "$LOG_FOLDER/vivado.log" -journal "$LOG_FOLDER/vivado.jou" -mode batch -source scripts/upload_bitstream.tcl -tclargs "$BITSTREAM_FILE"
