@@ -60,20 +60,20 @@ case $1 in
         create_qubic_env
         source ~/.bashrc
         conda activate qubic
-        pip install distributed_processor/python --no-cache
-        pip install chipcalibration/ qubitconfig/ software/ --no-cache
+        pip install -e distributed_processor/python --no-cache
+        pip install -e chipcalibration/ qubitconfig/ software/ --no-cache
         pip install jupyter --no-cache
         ;;
     client)
         echo "Configuring for CLIENT machine..."
         sudo pip install -e distributed_processor/python
         sudo cp software/scripts/qubic_rpc_server.service /etc/systemd/system
-	
+
         echo "Installation complete. Current Python version:"
         python --version
 
         cp software/scripts/server_config.yaml ~/
-        
+
         # use host name instead of static IP4 to avoid having to search for IP
     	# and manually update. In DNS, IP4 will automatically found by
     	# referring to the computer host name
@@ -84,6 +84,10 @@ case $1 in
 
 	    echo "Running qubic server with systemctl. Use journalctl --follow -u qubic_rpc_server to track for real time logs"
         sudo cp software/scripts/start_qubic_server.sh /usr/local/bin/
+
+        sudo systemctl daemon-reload
+        # restart if rpc is running, otherwise start it
+        sudo systemctl is-active --quiet qubic_rpc_server && sudo systemctl restart qubic_rpc_server || \
         sudo systemctl start qubic_rpc_server
         ;;
     *)

@@ -46,4 +46,10 @@ BITSTREAM_FILE="gateware/top/${USER}_build/${BUILD_FOLDER}/psbd.bit"
 
 echo "Bitstream file location ${BITSTREAM_FILE}"
 
-bash scripts/upload_bitstream_zcu216.sh $BITSTREAM_FILE
+read -p "Do you wanna upload ${BITSTREAM_FILE} just synthesized above to ZCU216 ? (yes/no): " choice
+if [[ "$choice" == "yes" ]]; then
+    echo "Uploading ${BITSTREAM_FILE} to FPGA ...."
+    bash scripts/upload_bitstream_zcu216.sh $BITSTREAM_FILE
+else
+    echo "Hardware synthesis finished."
+fi
