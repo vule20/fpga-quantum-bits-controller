@@ -105,6 +105,9 @@ Vivado%
 
 <details>
   <summary>Click to expand</summary>
+
+### Via UART
+
 First, you need to download a boot image to run Linux on the ARM core in the board. You can use the image from Berkeley Lab here. After having the SD card booted and inserted to the board, you have to change the J71 switch to 0001 to switch to SD boot mode to run the image. Then turn on the power button, connect the J11 UART port to a host computer and also connect the board to a router in the same network as the host computer. Initially you don't know the IP address of the Xilinx board, but you can use this command on the host computer to access the board via UART. But first, you have to reset the device path to reset the device’s parameters to a 'sane' default state. Open the terminal in the host computer and run:
 
 ```bash
@@ -123,6 +126,8 @@ You can also run:
 sudo stty -F /dev/ttyUSB1 -a  # to check the baudrate
 ```
 
+### Via IP4 (recommended)
+
 Alternatively, you can also use `nmap` in the host computer to search for the IP address of the Xilinx board and ssh into the board. This is the recommended way because it's more stable than the UART method. First, determine the range of addresses in your private network. You can do this by indentifing your host computer address with `ip a | grep 192`. For example, your host computer IP4 address is `192.168.1.239`, then the range of address for looking up is `192.168.1.*`, open terminal and run:
 
 ```bash
@@ -139,6 +144,9 @@ Then you can ssh into it, the default username and password is `xilinx`
 </details>
 
 ## Hardware synthesis
+
+<details>
+  <summary>Click to expand</summary>
 
 To build gateware (Qubit Controller), you can simply run the [build_zcu216_gateware.sh](build_zcu216_gateware.sh). This script will automatically ask you if you want to build the gateware with the lastest version, or the current version in the repo.
 
@@ -159,6 +167,8 @@ You can also pass a bitstream file to this file to upload to the FPGA.
 ```bash
 bash ./scripts/upload_bitstream_fpga.sh MY_BISTREAM_FILE_LOCATION
 ```
+
+</details>
 
 ## System software installation
 
