@@ -4,6 +4,8 @@ Lawrence Berkeley National Laboratory's quantum control systems Qubic2.0 reprodu
 
 # Prerequisites
 
+Before building and running this system, you have to install Vivado, drivers for your ZCU216 board.
+
 ## Installing Vivado
 
 <details>
@@ -40,7 +42,7 @@ Finally, run this command and wait for the installation to finish:
 ./xsetup -b Install -a XilinxEULA,3rdPartyEULA -c ~/.Xilinx/install_config.txt
 ```
 
-### Installing drivers for peripherals on Linux
+## Installing drivers for peripherals on Linux
 
 By default, it seems that JTAG cable can't be detected by vivado. If you connect an FPGA board and a JTAG cable to upload bitstream fils to the board, the cable may not be detected.
 
@@ -138,33 +140,61 @@ Then you can ssh into it, the default username and password is `xilinx`
 
 ## Hardware synthesis
 
+To build gateware (Qubit Controller), you can simply run the [build_zcu216_gateware.sh](build_zcu216_gateware.sh). This script will automatically ask you if you want to build the gateware with the lastest version, or the current version in the repo.
+
+```bash
+bash scripts/build_zcu216_gateware.sh
+```
+
+After succesfully building the gateware, it will ask you if you want to upload that `psbd.bit` file to the FPGA board.
+
+Also, in case you have multiple gateware built with different version and you want to test with different one. You can simply run the [upload_bitstream_fpga.sh](./scripts/upload_bitstream_fpga.sh). By default, it will loop through the [gateware folder](./gateware/) and list all available `psbd.bit` version for you to choose to upload to the ZCU216.
+
+```bash
+bash ./scripts/upload_bitstream_fpga.sh
+```
+
+You can also pass a bitstream file to this file to upload to the FPGA.
+
+```bash
+bash ./scripts/upload_bitstream_fpga.sh MY_BISTREAM_FILE_LOCATION
+```
+
 ## System software installation
 
 <details>
   <summary>Click to expand</summary>
-For Qubic2.0 to work correctly, you must both install correct libraries provided by Berkeley Lab on both the host and the FPGA gateware. We recommend you to install Anaconda on the host computer and have an isolated environment for qubic gateware. If you haven't installed Anaconda, you can run the [`install_conda.sh`](./scripts/install_conda.sh) script by:
-```bash
-bash ./scripts/install_conda.sh
-```
-
-The, to create a seperate environment for `qubic` and install approriate dependencies on the host computer, run:
+For Qubic2.0 to work correctly, you must both install correct libraries provided by Berkeley Lab on both the host and the FPGA gateware. We recommend you to install Anaconda on the host computer and have an isolated environment for qubic gateware. You can achieve all of these by simply run [the software installation script](./scripts/install_qubic_software.sh). On the host machine:
 
 ```bash
-bash ./scripts/qubic_setup.sh host
+bash ./scripts/install_qubic_software.sh host
 ```
 
-Also, clone this repository with all submodules on the ZCU216 and run:
+On the ZCU216 board:
 
 ```bash
-bash ./scripts/qubic_setup.sh FPGA
+git clone --recursive https://github.com/vule20/qubic2.0-qubit-controller.git
 ```
 
-This script will then run the qubic2.0 gateware on the FPGA board
+On parent folder of this repository on the client (ZCU216 FPGA), simply run:
+
+```bash
+bash ./scripts/install_qubic_software.sh client
+```
+
+After you go through all of these steps, you are ready to use this system.
 
 </details>
 
 # Contact
 
-If you wanna meet me, you can stop by my office A211, Lederle Graduate Research Center (LGRC), 740 N. Pleasant Street, Amherst, MA 01003.
+If you wanna meet me, you can stop by my office:
 
-Feel free to contact me through LinkedIn, my personal email, my umass email
+**A211, Lederle Graduate Research Center (LGRC)**  
+740 N. Pleasant Street, Amherst, MA 01003
+
+As a CS Ph.D. student, I am open to discussions, collaborations and internships as well. Feel free to contact me through:
+
+- [LinkedIn: Anthony Vule](https://www.linkedin.com/in/anthony-vule/)
+- [Personal Email](mailto:vdle@umass.edu)
+- [UMass Email](mailto:vdle@umass.edu)
