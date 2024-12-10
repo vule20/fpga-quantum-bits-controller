@@ -206,5 +206,5 @@ If you wanna meet me, you can stop by my office:
 As a CS Ph.D. student, I am open to discussions, collaborations and internships as well. Feel free to contact me through:
 
 - [LinkedIn: Anthony Vule](https://www.linkedin.com/in/anthony-vule/)
-- [Personal Email](mailto:vdle@umass.edu)
+- [Personal Email](mailto:vule20.cs@gmail.com)
 - [UMass Email](mailto:vdle@umass.edu)
