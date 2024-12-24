@@ -42,6 +42,10 @@ Finally, run this command and wait for the installation to finish:
 ./xsetup -b Install -a XilinxEULA,3rdPartyEULA -c ~/.Xilinx/install_config.txt
 ```
 
+If you want to remove your current Vivado version and install another version, make sure to remove the installed Xilinx location, `~/.Xilinx`, and also the following config:
+```bash
+rm ~/.config/menus/applications-merged/Xilinx\ Design\ Tools.menu
+```
 ## Installing drivers for peripherals on Linux
 
 By default, it seems that JTAG cable can't be detected by vivado. If you connect an FPGA board and a JTAG cable to upload bitstream fils to the board, the cable may not be detected.
@@ -208,3 +212,4 @@ As a CS Ph.D. student, I am open to discussions, collaborations and internships 
 - [LinkedIn: Anthony Vule](https://www.linkedin.com/in/anthony-vule/)
 - [Personal Email](mailto:vule20.cs@gmail.com)
 - [UMass Email](mailto:vdle@umass.edu)
+- [Berkeley Lab Email](mailto:vule@lbl.gov)
