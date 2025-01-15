@@ -1,6 +1,10 @@
-# qubic
+# Qubic2.0 Setup Scripts
 
 Lawrence Berkeley National Laboratory's quantum control systems Qubic2.0 reproduction. Scripts for quick hardware synthesis, software installation, tutorials and so on.
+
+### Disclaimer
+
+These scripts are not the official release from Lawrence Berkeley National Laboratory (LBNL). They are custom scripts I developed based on publicly available tutorials, documentation from LBNL and my joint work with them. The purpose of this repository is to simplify and accelerate the setup and installation process for users of the Qubic2.0 system. For the official resources and documentation, please refer to their [papers and Gitlab repositories](#references).
 
 # Prerequisites
 
@@ -43,9 +47,11 @@ Finally, run this command and wait for the installation to finish:
 ```
 
 If you want to remove your current Vivado version and install another version, make sure to remove the installed Xilinx location, `~/.Xilinx`, and also the following config:
+
 ```bash
 rm ~/.config/menus/applications-merged/Xilinx\ Design\ Tools.menu
 ```
+
 ## Installing drivers for peripherals on Linux
 
 By default, it seems that JTAG cable can't be detected by vivado. If you connect an FPGA board and a JTAG cable to upload bitstream fils to the board, the cable may not be detected.
@@ -200,7 +206,48 @@ After you go through all of these steps, you are ready to use this system.
 
 </details>
 
+# References
+
+## Tutorials
+
+Comprehensive tutorials and documentation for the QubiC framework are available at the following link:
+
+- [QubiC Tutorials and Documentation](https://lbl-qubic.gitlab.io/)
+
+Explore the full set of QubiC project repositories here:
+
+- [QubiC GitLab Repository](https://gitlab.com/LBL-QubiC)
+
+## Papers
+
+For a detailed description of the QubiC project, please refer to their published papers `QubiC: An open-source FPGA-based control and measurement system for superconducting quantum information processors`, `QubiC 2.0: An extensible open-source qubit control system capable of mid-circuit measurement and feed-forward`, `QubiC 2.0: A Flexible Advanced Full Stack Quantum Bit Control System`:
+
+If you use this work in your research, please cite the papers as follows:
+
+```bibtex
+@article{xu2023qubic,
+  title={QubiC 2.0: An extensible open-source qubit control system capable of mid-circuit measurement and feed-forward},
+  author={Xu, Yilun and Huang, Gang and Fruitwala, Neelay and Rajagopala, Abhi and Naik, Ravi K and Nowrouzi, Kasra and Santiago, David I and Siddiqi, Irfan},
+  journal={arXiv preprint arXiv:2309.10333},
+  year={2023}
+}
+```
+
+```bibtex
+@article{xu2021qubic,
+  title={QubiC: An open-source FPGA-based control and measurement system for superconducting quantum information processors},
+  author={Xu, Yilun and Huang, Gang and Balewski, Jan and Naik, Ravi and Morvan, Alexis and Mitchell, Bradley and Nowrouzi, Kasra and Santiago, David I and Siddiqi, Irfan},
+  journal={IEEE Transactions on Quantum Engineering},
+  volume={2},
+  pages={1--11},
+  year={2021},
+  publisher={IEEE}
+}
+```
+
 # Contact
+
+Feel free to reach out via any of the following channels for supports and discussions:
 
 - [LinkedIn: Anthony Vule](https://www.linkedin.com/in/anthony-vule/)
 - [Personal Email](mailto:vule20.cs@gmail.com)
