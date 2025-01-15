@@ -202,13 +202,6 @@ After you go through all of these steps, you are ready to use this system.
 
 # Contact
 
-If you wanna meet me, you can stop by my office:
-
-**A211, Lederle Graduate Research Center (LGRC)**  
-740 N. Pleasant Street, Amherst, MA 01003
-
-As a CS Ph.D. student, I am open to discussions, collaborations and internships as well. Feel free to contact me through:
-
 - [LinkedIn: Anthony Vule](https://www.linkedin.com/in/anthony-vule/)
 - [Personal Email](mailto:vule20.cs@gmail.com)
 - [UMass Email](mailto:vdle@umass.edu)
